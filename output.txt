@@ -1,0 +1,43 @@
+*** TASK 1-A ***
+Enter any string for part 1-a: macbook pro
+Hash:  b"'\x11\x9b\x85\xd0\xa5\xc5\x8a1\x81\x19\xd1%\x11z\x12\xa6f\x94\xc4\t\xa2\x8dW\x96omrU5\xf5W"
+
+*** TASK 1-B ***
+Enter string #1 for part 1-b: macbook pro
+One Hamming Distance string:  macbook prp
+Original String Hash:  b"'\x11\x9b\x85\xd0\xa5\xc5\x8a1\x81\x19\xd1%\x11z\x12\xa6f\x94\xc4\t\xa2\x8dW\x96omrU5\xf5W"
+String with one Hamming Distance Hash:  b'\x1aN\xaa\x95-\x00\xd2\xa2\x08>\x1dr\xcf\x8a\xba\xbd\xf1\xa0\xd2\xea$_\xc3\xfd\xf8\xe4i!\xcd\x14-"'
+
+Enter string #2 for part 1-b: car
+One Hamming Distance string:  cas
+Original String Hash:  b'+)a\xa41\xb2<\x90\x07\xef\xe2p\xc1\xd7\xeby\xc1\x9dA\x92\xd7\xcd-\x92Av\xeb\x0b\x19\xe7\xd2\xa1'
+String with one Hamming Distance Hash:  b'\n\xb2\xb1\x86\xc3\xd0\x98\x0fK\xb4\xc0(w\xaa\x1fW\xc7\x18\xcbJ@\xdb\xaa\xdeQ\xb1\xed+\xd2\x83\x06?'
+
+Enter string #3 for part 1-b: cybersecurity
+One Hamming Distance string:  cybersecuritz
+Original String Hash:  b'd\xa1\xe1\x97+f;5\xa8\xc0kE<\xe0\x18%\x1e\xfe\xf0\t%\xfbAB\x17\xf6\x08\x7f\x17\x901\xb8'
+String with one Hamming Distance Hash:  b'\xb7\x1e\xb0\x9b\x1bb@\xc9\x87E)\x04n\x90l\x9fh\xee\xa1\xe2\x1a\x04?i\xa4\x86VGP\x80Y\x12'
+
+*** TASK 1-C ***
+Hash size:  8 bits | Total inputs:  2  | Time it takes for collision:  7.152557373046875e-06 seconds
+Hash size:  10 bits | Total inputs:  33  | Time it takes for collision:  5.14984130859375e-05 seconds
+Hash size:  12 bits | Total inputs:  52  | Time it takes for collision:  7.772445678710938e-05 seconds
+Hash size:  14 bits | Total inputs:  150  | Time it takes for collision:  0.000225067138671875 seconds
+Hash size:  16 bits | Total inputs:  150  | Time it takes for collision:  0.00022339820861816406 seconds
+Hash size:  18 bits | Total inputs:  617  | Time it takes for collision:  0.0009708404541015625 seconds
+Hash size:  20 bits | Total inputs:  875  | Time it takes for collision:  0.0013554096221923828 seconds
+Hash size:  22 bits | Total inputs:  875  | Time it takes for collision:  0.0012714862823486328 seconds
+Hash size:  24 bits | Total inputs:  2320  | Time it takes for collision:  0.003442525863647461 seconds
+Hash size:  26 bits | Total inputs:  2464  | Time it takes for collision:  0.0035254955291748047 seconds
+Hash size:  28 bits | Total inputs:  2464  | Time it takes for collision:  0.0034787654876708984 seconds
+Hash size:  30 bits | Total inputs:  15718  | Time it takes for collision:  0.020221471786499023 seconds
+Hash size:  32 bits | Total inputs:  54947  | Time it takes for collision:  0.06875443458557129 seconds
+Hash size:  34 bits | Total inputs:  91887  | Time it takes for collision:  0.11786437034606934 seconds
+Hash size:  36 bits | Total inputs:  91887  | Time it takes for collision:  0.11610078811645508 seconds
+Hash size:  38 bits | Total inputs:  267777  | Time it takes for collision:  0.346010684967041 seconds
+Hash size:  40 bits | Total inputs:  267777  | Time it takes for collision:  0.34756898880004883 seconds
+Hash size:  42 bits | Total inputs:  1127828  | Time it takes for collision:  1.5611283779144287 seconds
+Hash size:  44 bits | Total inputs:  3554021  | Time it takes for collision:  5.263833284378052 seconds
+Hash size:  46 bits | Total inputs:  8587729  | Time it takes for collision:  12.576160430908203 seconds
+Hash size:  48 bits | Total inputs:  12418461  | Time it takes for collision:  18.18856430053711 seconds
+Hash size:  50 bits | Total inputs:  32212886  | Time it takes for collision:  48.237754106521606 seconds
