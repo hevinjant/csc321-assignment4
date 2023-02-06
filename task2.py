@@ -11,10 +11,10 @@ class user():
     def parse(self, string):
         split = str(string).split(":")
         self.name = split[0]
-        self.fullhash = bytes(split[1][:-5], 'ascii')
+        self.fullhash = bytes(split[1].removesuffix("\\r\\n").removesuffix("'"), 'ascii')
         index = split[1].rfind("$") + 23
-        self.salt = bytes(split[1][:index].strip(), 'ascii')
-        self.hsh = bytes(split[1][index:].strip(), 'ascii')
+        self.salt = bytes(split[1][:index], 'ascii')
+        self.hsh = bytes(split[1][index:].removesuffix("\\r\\n'").removesuffix("'"), 'ascii')
         return self
 
     def print(self):
@@ -25,7 +25,7 @@ class user():
 
     def check(self, word):
         if checkpw(word, self.fullhash):
-            file = open("out.txt", "w")
+            file = open("out.txt", "a")
             print("Found pass for '" + self.name + "':\t" + str(word))
             file.write("Found pass for '" + self.name + "':\t" + str(word))
             file.close
@@ -42,42 +42,6 @@ def check(trip):
             print("Found pass: '" + str(h) + "':\t" + str(trip[0]))
             file.write("Found pass: '" + str(h) + "':\t" + str(trip[0]) + "\n")
             file.close()
-    # h1 = hashpw(trip[0], trip[1][0])
-    # h2 = hashpw(trip[0], trip[1][1])
-    # h3 = hashpw(trip[0], trip[1][2])
-    # h4 = hashpw(trip[0], trip[1][3])
-    # h5 = hashpw(trip[0], trip[1][4])
-    # h6 = hashpw(trip[0], trip[1][5])
-    # if h1 in trip[2][0]:
-    #     file = open("out.txt", "a")
-    #     print("Found pass: '" + str(h1) + "':\t" + str(trip[0]))
-    #     file.write("Found pass: '" + str(h1) + "':\t" + str(trip[0]))
-    #     file.close()
-    # if h2 in trip[2][1]:
-    #     file = open("out.txt", "a")
-    #     print("Found pass: '" + str(h2) + "':\t" + str(trip[0]))
-    #     file.write("Found pass: '" + str(h2) + "':\t" + str(trip[0]))
-    #     file.close()
-    # if h3 in trip[2][2]:
-    #     file = open("out.txt", "a")
-    #     print("Found pass: '" + str(h3) + "':\t" + str(trip[0]))
-    #     file.write("Found pass: '" + str(h3) + "':\t" + str(trip[0]))
-    #     file.close()
-    # if h4 in trip[2][3]:
-    #     file = open("out.txt", "a")
-    #     print("Found pass: '" + str(h4) + "':\t" + str(trip[0]))
-    #     file.write("Found pass: '" + str(h4) + "':\t" + str(trip[0]))
-    #     file.close()
-    # if h5 in trip[2][4]:
-    #     file = open("out.txt", "a")
-    #     print("Found pass: '" + str(h5) + "':\t" + str(trip[0]))
-    #     file.write("Found pass: '" + str(h5) + "':\t" + str(trip[0]))
-    #     file.close()
-    # if h6 in trip[2][5]:
-    #     file = open("out.txt", "a")
-    #     print("Found pass: '" + str(h6) + "':\t" + str(trip[0]))
-    #     file.write("Found pass: '" + str(h6) + "':\t" + str(trip[0]))
-    #     file.close()
 
 def main():
     print("TASK 2:")
@@ -133,18 +97,20 @@ def main():
     # hashes.add(Bofur.fullhash)
     # hss.append(hashes)
 
-    hashes = set()
-    Durin = user().parse(file.readline())
-    salts.append(Durin.salt)
-    hashes.add(Durin.fullhash)
-    hss.append(hashes)
+    # hashes = set()
+    Durin = user().parse(file.readline()) # purrone
+    # salts.append(Durin.salt)
+    # hashes.add(Durin.fullhash)
+    # hss.append(hashes)
     
-    passwords = [(bytes(w, 'ascii'), salts, hss) for w in words.words() if 6 <= len(w) <= 10]
+    
+    #passwords = [(bytes(w, 'ascii'), salts, hss) for w in words.words() if 6 <= len(w) <= 10]
+    passwords = [bytes(w, 'ascii') for w in words.words() if 6 <= len(w) <= 10]
     print("Checking " + str(len(passwords)) + " passwords")
-
+    Durin.print()
     p = multiprocessing.Pool(12)
 
-    p.map(check, passwords)
+    p.map(Durin.check, passwords)
     
 
 if __name__ == "__main__":
