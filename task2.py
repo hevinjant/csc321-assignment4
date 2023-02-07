@@ -11,10 +11,10 @@ class user():
     def parse(self, string):
         split = str(string).split(":")
         self.name = split[0]
-        self.fullhash = bytes(split[1].removesuffix("\\r\\n").removesuffix("'"), 'ascii')
+        self.fullhash = bytes(split[1].removesuffix("'").removesuffix("\\r\\n"), 'ascii')
         index = split[1].rfind("$") + 23
         self.salt = bytes(split[1][:index], 'ascii')
-        self.hsh = bytes(split[1][index:].removesuffix("\\r\\n'").removesuffix("'"), 'ascii')
+        self.hsh = bytes(split[1][index:].removesuffix("'").removesuffix("\\r\\n"), 'ascii')
         return self
 
     def print(self):
@@ -49,10 +49,11 @@ def main():
     hss = list()
     salts = list()
 
+    #       Max time for 08 workfactor was 3:22
     # hashes = set()
-    bilbo = user().parse(file.readline()) # welcome
-    gandalf = user().parse(file.readline()) # wizard
-    thorin = user().parse(file.readline()) # diamond
+    bilbo = user().parse(file.readline()) # welcome 3min11sec
+    gandalf = user().parse(file.readline()) # wizard 2min36sec
+    thorin = user().parse(file.readline()) # diamond 13sec
     # salts.append(bilbo.salt)
     # hashes.add(bilbo.fullhash)
     # hashes.add(gandalf.fullhash)
@@ -106,11 +107,13 @@ def main():
     
     #passwords = [(bytes(w, 'ascii'), salts, hss) for w in words.words() if 6 <= len(w) <= 10]
     passwords = [bytes(w, 'ascii') for w in words.words() if 6 <= len(w) <= 10]
-    print("Checking " + str(len(passwords)) + " passwords")
-    Durin.print()
-    p = multiprocessing.Pool(12)
 
-    p.map(Durin.check, passwords)
+    tocheck = thorin
+
+    print("Checking " + str(len(passwords)) + " passwords for user:")
+    tocheck.print()
+    p = multiprocessing.Pool(12)
+    p.map(tocheck.check, passwords)
     
 
 if __name__ == "__main__":
